@@ -7,3 +7,9 @@ spring:
     hibernate.ddl-auto: update
     generate-ddl: true
     show-sql: true
+  security:
+    user:
+      name: ravinder
+      password: root
+      roles:
+        - ADMIN
