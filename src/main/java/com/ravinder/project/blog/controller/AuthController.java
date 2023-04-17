@@ -1,5 +1,6 @@
 package com.ravinder.project.blog.controller;
 
+import com.ravinder.project.blog.payload.JwtAuthResponse;
 import com.ravinder.project.blog.payload.LoginDto;
 import com.ravinder.project.blog.payload.RegisterDto;
 import com.ravinder.project.blog.service.AuthService;
@@ -22,8 +23,9 @@ public class AuthController {
     }
 
     @PostMapping(value = {"/login", "/signin"})
-    public ResponseEntity<String> login(@RequestBody LoginDto loginDto){
-        return ResponseEntity.ok(authService.login(loginDto));
+    public ResponseEntity<JwtAuthResponse> login(@RequestBody LoginDto loginDto){
+        JwtAuthResponse response = new JwtAuthResponse(authService.login(loginDto));
+        return ResponseEntity.ok(response);
     }
 
     @PostMapping(value = {"/register", "/signup"})
